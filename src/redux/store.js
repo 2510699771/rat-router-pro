@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+//引入所有合并好的reducer
 import combineReducer from "./combineReducer";
 //创建仓库
 // const reducer = (state = 0, action) => {
@@ -11,8 +12,9 @@ import combineReducer from "./combineReducer";
 //     //真正return的数据才是，最终仓库所存的数据
 // }
 // const store = createStore(reducer)
-const store = createStore(combineReducer)
 
+const store = createStore(combineReducer)
+export default store
 
 // const incrementAction = {
 //     type: 'increment'
