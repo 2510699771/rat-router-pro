@@ -1,7 +1,19 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 //引入所有合并好的reducer
 import combineReducer from "./combineReducer";
+// 引入操作日志的中间件
+import logger from 'redux-logger';
 //创建仓库
+const store = createStore(combineReducer, applyMiddleware(logger))
+export default store
+
+
+
+
+
+
+
+
 // const reducer = (state = 0, action) => {
 //     console.log(action);
 //     switch (action.type) {
@@ -13,8 +25,7 @@ import combineReducer from "./combineReducer";
 // }
 // const store = createStore(reducer)
 
-const store = createStore(combineReducer)
-export default store
+
 
 // const incrementAction = {
 //     type: 'increment'
@@ -36,4 +47,4 @@ export default store
 
 
 // // store.getState()
-console.log(store.getState()) //获取仓库数据
+// console.log(store.getState()) //获取仓库数据
