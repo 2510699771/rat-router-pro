@@ -3,10 +3,17 @@ import HomeTop from '../../components/homeTop/HomeTop'
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Counter from '../../components/counter/Counter';
 import TodoList from '../../components/todoList/TodoList';
+
+import { Button } from 'antd';
 export default class Home extends Component {
   render() {
     return <div>
-      Home
+      <Button type="primary">Primary Button</Button>
+      <Button>Default Button</Button>
+      <Button type="dashed">Dashed Button</Button>
+      <br />
+      <Button type="text">Text Button</Button>
+      <Button type="link">Link Button</Button>
       <HomeTop></HomeTop>
       <ul>
         {/* 改变浏览器 URL 的地址 */}
