@@ -10,7 +10,13 @@ class Counter extends Component {
         return (
             <div>
                 <h1>计数器：{count}</h1>
-                <button onClick={() => {
+                <input type="text" onBlur={(e) => {
+                    dispatch({
+                        type: 'inputCountAsync',
+                        payload: e.target.value
+                    })
+                }} />
+                {/* <button onClick={() => {
                     // 修改 store 数据：dispatch(action对象)
                     // 1. 调用方法获取到 action 对象
                     const action = incrementAction();
@@ -21,7 +27,7 @@ class Counter extends Component {
                 <button onClick={() => {
                     const action = decrementAction();
                     dispatch(action);
-                }}>-1</button>
+                }}>-1</button> */}
             </div>
         )
     }
@@ -30,7 +36,7 @@ class Counter extends Component {
 // 获取到 store 中所有的数据，将需要的数据传递给组件的 props
 const mapStateToProps = (state) => {
     // console.log('组件中获取到的数据', state);
-    // return 的值，就会传递给当前组件的 props
+    //  return 的值，就会传递给当前组件的 props
     return { count: state.counterReducers.count }
 }
 export default connect(mapStateToProps)(Counter)

@@ -3,8 +3,29 @@ import { createStore, applyMiddleware } from "redux";
 import combineReducer from "./combineReducer";
 // 引入操作日志的中间件
 import logger from 'redux-logger';
+
+// 1、引入 redux-saga 模块，获取到 createSagaMiddleware 方法
+import createSagaMiddleware from 'redux-saga'
+
+// 4、引入根 saga 文件
+import rootSaga from "./rootSaga";
+
+
+
+// 2、调用 createSagaMiddleware 方法，得到 saga 对象
+const saga = createSagaMiddleware()
+
 //创建仓库
-const store = createStore(combineReducer, applyMiddleware(logger))
+const store = createStore(
+    combineReducer,
+    // 3、将 saga 中间件加入到 redux 中
+    applyMiddleware(
+        //logger, 
+        saga)
+)
+
+// 5、运行 saga
+saga.run(rootSaga)
 export default store
 
 
